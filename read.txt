@@ -53,3 +53,26 @@ configure routes
 
 //form validation
 use ref hoook
+
+firebase setup
+create project 
+select type of authentication
+
+added to a github repository
+
+install firebase cli
+firebase login
+initialize firebase firebase init 
+firebase deploy
+
+npm start back to local host
+
+
+create a signup user account 
+
+lavish@gmail.com
+Lavish1234
+
+//user ko har jagah use karna h to redx store ask through chat gpt later cart eg
+
+//some error push diploay name signout can access browse route by anybody login user should redirect to browse route
