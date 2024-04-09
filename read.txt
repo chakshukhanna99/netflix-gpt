@@ -1,0 +1,55 @@
+
+create react app
+tailwind config for create react app
+
+login/signup form
+redirect to browse page
+
+browse after authentication
+features
+browse page
+header
+background movie player
+-trailer
+title and description
+
+movie suggestions
+netflix gpt 
+search bar
+
+
+
+
+//for router
+install react router dom
+make paths
+ const appRouter = createBrowserRouter([
+        {
+            path:"/",
+            element:<Login/>
+        },
+        {
+            path:"/browse",
+            element:<Browse/>
+        }
+    ])
+import {RouterProvider} from'react-router-dom';
+return (
+    <div>
+    <RouterProvider router={appRouter}/>
+    </div>
+  )
+
+
+export default Body
+
+//background image address
+https://assets.nflxext.com/ffe/siteui/vlv3/6cefb2f5-90be-4f57-adc4-f6c3c579273d/3943990c-f4e0-4147-82ad-f531e2b547f3/IN-en-20240401-popsignuptwoweeks-perspective_alpha_website_small.jpg
+
+
+
+//sign in signup through use state 
+configure routes
+
+//form validation
+use ref hoook
