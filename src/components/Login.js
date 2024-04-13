@@ -1,14 +1,13 @@
 import { useState,useRef } from "react";
-import { useNavigate } from 'react-router-dom'
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword,updateProfile} from "firebase/auth";
 import {auth} from "../utils/firebase"
 import {useDispatch} from 'react-redux'
 import {addUser} from '../utils/userSlice'
+import {USER_AVATAR,BG_URL } from "../utils/constant"
 
 const Login = ()=>{
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isSignInForm,setiisSignInForm] = useState(true);
     const [errorMessage,setErrorMessage] = useState(null);
@@ -33,13 +32,12 @@ const Login = ()=>{
     // Signed up 
     const user = userCredential.user;
     updateProfile(user, {
-        displayName: email.current.value, photoURL: "https://avatars.githubusercontent.com/u/103903052?v=4"
+        displayName: email.current.value, photoURL: USER_AVATAR
       }).then(() => {
         // Profile updated!
         // ...
         const {uid,email,displayName,photoURL} = auth.currentUser;
         dispatch(addUser({usd:uid,displayName:displayName,email:email,photoURL:photoURL}));
-        navigate("/browse")
       }).catch((error) => {
         // An error occurred
         // ...
@@ -63,8 +61,6 @@ const Login = ()=>{
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user);
-    navigate("/browse");
     // ...
   })
   .catch((error) => {
@@ -79,12 +75,12 @@ const Login = ()=>{
         <div>
         <Header/>
         <div className="absolute">
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/6cefb2f5-90be-4f57-adc4-f6c3c579273d/3943990c-f4e0-4147-82ad-f531e2b547f3/IN-en-20240401-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+        <img className="h-screen w-screen object-cover" src={BG_URL}
         alt='background'/>
         </div>
         <form
         onSubmit={(e)=>e.preventDefault()}
-         className="rounded-lg w-3/12 absolute bg-black p-10 mt-36 mx-auto right-0 left-0 text-white bg-opacity-80">
+         className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
         <h1 className="font-bold text-3xl py-4">{isSignInForm? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && <input className="py-4 my-2  w-full p-1 bg-gray-700" type="text" placeholder="Full Name" />}
             <input ref={email} className="py-4 my-2 w-full p-1 bg-gray-700" type="text" placeholder="Email Address" />

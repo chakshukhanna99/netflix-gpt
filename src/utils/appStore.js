@@ -1,9 +1,27 @@
-import {configureStore} from '@reduxjs/toolkit';
+// import {configureStore} from '@reduxjs/toolkit';
+// import moviesReducer from './moviesSlice';
+// import userReducer  from './userSlice';
+// const appStore=configureStore({
+//     reducer:{
+//         user:userReducer,
+//         movies:moviesReducer,
+//     },
+// })
+// export default appStore;
 
+import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
-const appStore=configureStore({
-    reducer:{
-        user:userReducer,
-    },
-})
+import moviesReducer from "./moviesSlice";
+import gptReducer from "./gptSlice";
+import configReducer from "./configSlice";
+
+const appStore = configureStore({
+  reducer: {
+    user: userReducer,
+    movies: moviesReducer,
+    gpt: gptReducer,
+    config: configReducer,
+  },
+});
+
 export default appStore;
